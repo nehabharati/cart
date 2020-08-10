@@ -77,6 +77,16 @@ button {
   padding: 0.5em;
 }
 
+#delete {
+  text-align: center;
+  background-color: coral;
+  color: white;
+  padding: 0.5em;
+  position: relative;
+  margin-bottom: 2em;
+  left: 40%;
+}
+
 @media (max-width:450px) {
   .App {
     flex-direction: column;

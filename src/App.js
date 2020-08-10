@@ -15,6 +15,7 @@ function App() {
   function deleteItem(id) {
     const data = item.filter((i) => i.id !== id);
     setItem(data);
+    document.getElementById("delete").innerHTML = "Item deleted";
   }
 
   function decrement(item) {
@@ -29,6 +30,7 @@ function App() {
   return (
     <div>
       <h1>Order summary</h1>
+      <span id="delete"></span>
       <div className="App">
         <div className="cart">
           <ul>
