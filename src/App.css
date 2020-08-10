@@ -3,6 +3,15 @@
   justify-content: center;
 }
 
+h1 {
+  text-align: center;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+
 .cart {
   width: 50%;
 }
@@ -32,7 +41,15 @@ button {
 
 .items {
   display: flex;
-  align-items: center;
+}
+
+.info {
+  display: flex;
+
+}
+
+.info span {
+  margin: 0 1em;
 }
 
 .price {
@@ -46,11 +63,14 @@ button {
 
 .total {
   border: 1px solid #ddd;
-  width: 200px;
+  width: 300px;
+  padding: 0 1em;
 }
 
 .total p:last-of-type {
   font-weight: bold;
+  background-color: #ddd;
+  padding: 0.5em;
 }
 
 @media (max-width:450px) {
