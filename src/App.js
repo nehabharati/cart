@@ -45,7 +45,7 @@ function App() {
                     &times;
                   </span>
                 </li>
-                <li>
+                <li className="add">
                   <button onClick={() => decrement(item)}>-</button>
                   <span className="qty">{item.count}</span>
                   <button onClick={() => increment(item)}>+</button>

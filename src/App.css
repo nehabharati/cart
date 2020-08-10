@@ -67,6 +67,10 @@ button {
   padding: 0 1em;
 }
 
+.add {
+  display: flex;
+}
+
 .total p:last-of-type {
   font-weight: bold;
   background-color: #ddd;
@@ -76,6 +80,10 @@ button {
 @media (max-width:450px) {
   .App {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+  }
+
+  .cart li {
+    padding-left: 0;
   }
 }
