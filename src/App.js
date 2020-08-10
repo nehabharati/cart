@@ -6,12 +6,11 @@ function App() {
   const [item, setItem] = useState([]);
   const [count, setCount] = useState(1);
   const [cost, setCost] = useState(0);
+  const [money, setMoney] = useState(0);
 
   useEffect(() => {
     setItem(data);
   }, []);
-
-  console.log(cost);
 
   function deleteItem(id) {
     const data = item.filter((i) => i.id !== id);
@@ -24,10 +23,9 @@ function App() {
 
   function increment(item) {
     setCount(item.count++);
-    let money = count * item.price;
-    console.log(money);
+    setMoney((count + 1) * item.price);
   }
-
+  console.log(count, money);
   return (
     <div>
       <h1>Order summary</h1>
@@ -55,13 +53,17 @@ function App() {
             ))}
           </ul>
         </div>
+
         <div className="total">
           <h3>Total</h3>
           <p>
-            Items: <span id="cost">${cost}</span>
+            Items: <span id="cost">${money}</span>
           </p>
           <p>
-            Order total <span>${cost}</span>
+            Discount: <span>{}</span>
+          </p>
+          <p>
+            Order total <span>${money}</span>
           </p>
         </div>
       </div>
