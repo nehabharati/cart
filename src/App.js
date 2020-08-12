@@ -1,36 +1,86 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import getPrices from "./utils/getSum";
+import getDiscount from "./utils/getDiscount";
 import data from "./data";
 
 function App() {
   const [item, setItem] = useState([]);
   const [count, setCount] = useState(1);
+  const [discount, setDiscount] = useState(0);
   const [cost, setCost] = useState(0);
-  const [money, setMoney] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [typeDiscount, setTypeDiscount] = useState(0);
+  const [message, setMessage] = useState("");
 
+  //On first render all info is displayed properly
   useEffect(() => {
     setItem(data);
+    // Add all the prices of items and set it to cost
+    setCost(getPrices(data));
+    // Add all the discounts of items and set it to discount
+    setDiscount(getDiscount(data));
+    // Subtract the discount(gotten from getDiscount) from cost(gotten from getPrices)
+    setTotal(getPrices(data) - getDiscount(data));
+    localStorage.setItem("cost", cost);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      document.getElementById("delete").classList.remove("active");
+      setMessage("");
+    }, 8000);
+  }, [message]);
+
+  // Deletes the items
   function deleteItem(id) {
     const data = item.filter((i) => i.id !== id);
     setItem(data);
-    document.getElementById("delete").innerHTML = "Item deleted";
+    localStorage.setItem("data", data);
+    // Add the active class only when the item is deleted
+    setMessage("Item deleted");
+    document.getElementById("delete").classList = "active";
   }
 
+  // Decrement the quantity of items
   function decrement(item) {
-    setCount(item.count--);
+    if (item.count > 0) {
+      item.count = item.count - 1;
+      setCount(item.count);
+      // Add respective item's price to current price
+      setCost(cost - item.price);
+      // Add respective item's discount to current discount
+      setDiscount(discount - item.discount);
+      // Update the total
+      setTotal(cost - item.price - (discount - item.discount));
+      if ((item.type === "fiction") & (typeDiscount > 0)) {
+        setTypeDiscount(typeDiscount - 5);
+        setTotal(cost - item.price - (discount - item.discount) - 5);
+      }
+    }
   }
 
+  // Increment the quantity of items
   function increment(item) {
-    setCount(item.count++);
-    setMoney((count + 1) * item.price);
+    item.count = item.count + 1;
+    setCount(item.count);
+
+    // Add respective item's price to current price
+    setCost(cost + item.price);
+    // Add respective item's discount to current discount
+    setDiscount(discount + item.discount);
+    // Update the total
+    setTotal(cost + item.price - (discount + item.discount));
+    if (item.type === "fiction") {
+      setTypeDiscount(5);
+      setTotal(cost + item.price - (discount + item.discount) - 5);
+    }
   }
-  console.log(count, money);
+
   return (
     <div>
       <h1>Order summary</h1>
-      <span id="delete"></span>
+      <p id="delete">{message}</p>
       <div className="App">
         <div className="cart">
           <ul>
@@ -41,9 +91,9 @@ function App() {
                     <img src={item.img_url} alt={item.name} />
                   </span>
                   {item.name}
-                  <span className="close" onClick={() => deleteItem(item.id)}>
+                  <button className="close" onClick={() => deleteItem(item.id)}>
                     &times;
-                  </span>
+                  </button>
                 </li>
                 <li className="add">
                   <button onClick={() => decrement(item)}>-</button>
@@ -59,13 +109,16 @@ function App() {
         <div className="total">
           <h3>Total</h3>
           <p>
-            Items: <span id="cost">${money}</span>
+            Items: <span id="cost">${cost}</span>
           </p>
           <p>
-            Discount: <span>{}</span>
+            Discount: <span>${discount}</span>
           </p>
           <p>
-            Order total <span>${money}</span>
+            Type discount: <span>${typeDiscount}</span>
+          </p>
+          <p>
+            Order total: <span>${total}</span>
           </p>
         </div>
       </div>

@@ -1,0 +1,6 @@
+1. Do not use the state inside the useeffect hook. You can set the state but dont use the state as an input. i.e. 
+    Do this
+        setMoney(...)  ---> here you're setting the state
+    Don't do this
+        getSUm(item)   ---> here item is the state
+2. Keep the javascript functions outisde the component and use it inside as needed

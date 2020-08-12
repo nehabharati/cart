@@ -1,12 +1,20 @@
+body {
+  font-family: Helvetica Neue;
+  margin: 0;
+}
+
 .App {
   display: flex;
-  justify-content: center;
-  font-family: Helvetica Neue;
+  justify-content: space-evenly;
+  /* background-color: #cbe6ef; */
+  margin: 2em;
+  border-radius: 10px;
 }
 
 h1 {
   text-align: center;
-  font-family: Helvetica Neue;
+  position: relative;
+  margin-bottom: 2em;
 }
 
 img {
@@ -16,6 +24,9 @@ img {
 
 .cart {
   width: 50%;
+  margin: 0;
+  box-shadow: 0 2px 40px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
 .cart li:first-of-type {
@@ -26,26 +37,34 @@ img {
   padding: 0.5em;
   margin: 0 0.5em;
   border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-button {
+.add button {
   border: none;
-  background-color: white;
+  background-color: #ddd;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .cart li {
   list-style: none;
   padding: 1em;
+  margin: 0;
   margin-bottom: 0.5em;
+
 }
 
 .items {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .info {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
 }
 
@@ -60,12 +79,32 @@ button {
 .close {
   float: right;
   cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0 1em;
+  padding: 0 0.2em;
+  border-radius: 5px;
+  background-color: #ddd;
+  border: none;
 }
 
 .total {
-  border: 1px solid #ddd;
   width: 300px;
+  height: 200px;
   padding: 0 1em;
+  box-shadow: 0 2px 40px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.total p {
+  font-size: 0.8rem;
+}
+
+.total span {
+  float: right;
+  margin-top: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
 }
 
 .add {
@@ -79,14 +118,21 @@ button {
 }
 
 #delete {
+  position: absolute;
+  top: 7%;
+  left: 0;
+}
+
+.active {
   text-align: center;
-  background-color: coral;
+  background-color: #90cdf4;
   color: white;
   padding: 0.5em;
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
   font-weight: bold;
   left: 40%;
+  width: 100%;
 }
 
 @media (max-width:450px) {
