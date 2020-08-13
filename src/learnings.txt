@@ -4,3 +4,4 @@
     Don't do this
         getSUm(item)   ---> here item is the state
 2. Keep the javascript functions outisde the component and use it inside as needed
+3. Local storage only accepts strings so we do JSON.stringify

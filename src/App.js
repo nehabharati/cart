@@ -32,6 +32,31 @@ function App() {
     }, 8000);
   }, [message]);
 
+  // Gets latest items from local storage
+  useEffect(() => {
+    const data = localStorage.getItem("data");
+    try {
+      if (data) {
+        setItem(JSON.parse(data));
+      }
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }, []);
+
+  // Puts latest data into local storage
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(item));
+  });
+
+  //Updates the cost,discount and total after deleting items
+  useEffect(() => {
+    setCost(getPrices(item));
+    setDiscount(getDiscount(item));
+    setTotal(getPrices(item) - getDiscount(item));
+  }, [item]);
+
   // Deletes the items
   function deleteItem(id) {
     const data = item.filter((i) => i.id !== id);
