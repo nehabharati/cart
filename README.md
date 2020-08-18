@@ -1,15 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Shopping cart component
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm install`
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Updates the total after calculating cost and discount
+- If item type = "fiction" additional type discount is added
+- Deletes unwanted items
+- Maintains state even after refresh using localStorage

@@ -6,9 +6,27 @@ body {
 .App {
   display: flex;
   justify-content: space-evenly;
-  /* background-color: #cbe6ef; */
   margin: 2em;
   border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.cart .title li:first-of-type {
+  border: none;
+  padding-left: 5em;
+}
+
+.title li:nth-child(2) {
+  padding-left: 5em;
+}
+
+.title li:nth-child(3) {
+  padding-right: 3em;
 }
 
 h1 {
@@ -53,7 +71,6 @@ img {
   padding: 1em;
   margin: 0;
   margin-bottom: 0.5em;
-
 }
 
 .items {
@@ -65,7 +82,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
 }
 
 .info span {

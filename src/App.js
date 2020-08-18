@@ -108,6 +108,11 @@ function App() {
       <p id="delete">{message}</p>
       <div className="App">
         <div className="cart">
+          <ul className="title">
+            <li>Items</li>
+            <li>Quantity</li>
+            <li>Price</li>
+          </ul>
           <ul>
             {item.map((item) => (
               <div className="items" key={item.id}>
