@@ -37,7 +37,7 @@ function App() {
     const data = localStorage.getItem("data");
     try {
       if (data) {
-        // setItem(JSON.parse(data));
+        setItem(JSON.parse(data));
       }
     } catch (e) {
       console.log(e);
