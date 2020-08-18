@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import getPrices from "./utils/getSum";
+import getSum from "./utils/getSum";
 import getDiscount from "./utils/getDiscount";
 import data from "./data";
 
@@ -17,11 +17,11 @@ function App() {
   useEffect(() => {
     setItem(data);
     // Add all the prices of items and set it to cost
-    setCost(getPrices(data));
+    setCost(getSum(data));
     // Add all the discounts of items and set it to discount
     setDiscount(getDiscount(data));
-    // Subtract the discount(gotten from getDiscount) from cost(gotten from getPrices)
-    setTotal(getPrices(data) - getDiscount(data));
+    // Subtract the discount(gotten from getDiscount) from cost(gotten from getSum)
+    setTotal(getSum(data) - getDiscount(data));
     localStorage.setItem("cost", cost);
   }, []);
 
@@ -52,9 +52,9 @@ function App() {
 
   //Updates the cost,discount and total after deleting items
   useEffect(() => {
-    setCost(getPrices(item));
+    setCost(getSum(item));
     setDiscount(getDiscount(item));
-    setTotal(getPrices(item) - getDiscount(item));
+    setTotal(getSum(item) - getDiscount(item));
   }, [item]);
 
   // Deletes the items
